@@ -22,12 +22,20 @@ class world extends Phaser.Scene {
 
     this.load.spritesheet('lee', 'assets/Lee32x32.png', {frameWidth: 32, frameHeight: 32});
 
+    this.load.audio("bgMusic",'assets/background.mp3');
+
 
   }
 
   create() {
     console.log("* world scene");
 
+    this.backgroundSnd = this.sound.add('bgMusic');
+
+    this.bgMusic = this.sound.add('bgMusic', {loop:true}).setVolume(0.2)
+    this.bgMusic.stop();
+
+    this.bgMusic.play();
     //Step 3 - Create the map from main
   let map = this.make.tilemap({ key: "world" });
 

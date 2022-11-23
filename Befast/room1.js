@@ -35,6 +35,8 @@ class room1 extends Phaser.Scene {
         this.load.image('arrow','assets/arrow32x32.png');
         this.load.image('sword','assets/sword32x32.png');
 
+        this.load.spritesheet('S', 'assets/S32x32.png', {frameWidth: 32, frameHeight: 32});
+
     }
 
     create() {
@@ -56,10 +58,17 @@ class room1 extends Phaser.Scene {
 
     var start=map.findObject("Object",(obj)=> obj.name === "start")
 
+    this.anims.create({
+      key: 'Sword',
+      frames: this.anims.generateFrameNumbers('S', { start: 0, end: 16 }),
+      frameRate: 20,
+      repeat: -1
+  });
+
     this.bullet = this.physics.add.sprite(0, 0, 'bullet').setVisible(true);
     this.bullet2 = this.physics.add.sprite(0, 0, 'bullet').setVisible(true);
     this.arrow = this.physics.add.sprite(0, 0, 'arrow').setVisible(true);
-    this.sword = this.physics.add.sprite(0, 0, 'sword').setVisible(true);
+    this.sword = this.physics.add.sprite(0, 0, 'S').setVisible(true).play('Sword');
 
 
     this.player = this.physics.add.sprite(start.x, start.y, 'lee').setScale(2);
