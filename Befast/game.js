@@ -15,7 +15,9 @@
     // },
     backgroundColor: '#000000',
     pixelArt: true,
-    scene: [main, world, room1,room2,room3]
+    scene: [,main, world, room1,room2,room3,gameOver,showInventory]
 };
 
 var game = new Phaser.Game(config);
+window.key= 0
+window.heart = 3

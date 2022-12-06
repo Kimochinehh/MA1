@@ -78,7 +78,7 @@ class room2 extends Phaser.Scene {
 
     this.anims.create({
       key: 'Sword',
-      frames: this.anims.generateFrameNumbers('S', { start: 0, end: 16 }),
+      frames: this.anims.generateFrameNumbers('S', { start: 0, end: 15 }),
       frameRate: 40,
       repeat: -1
   });

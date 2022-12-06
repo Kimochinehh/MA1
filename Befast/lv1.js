@@ -27,6 +27,7 @@ class world extends Phaser.Scene {
   create() {
     console.log("* lv1 scene");
 
+
     //Step 3 - Create the map from main
   let map = this.make.tilemap({ key: "lv1" });
 
@@ -111,6 +112,8 @@ this.add.sprite(100, 400, 'lee').play('left');
 
     // camera follow player
     this.cameras.main.startFollow(this.player);
+
+
   } /////////////////// end of create //////////////////////////////
 
   update() {

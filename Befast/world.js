@@ -15,12 +15,14 @@ class world extends Phaser.Scene {
     this.load.tilemapTiledJSON("world", "assets/lvmap.tmj");
 
     // Step 2 : Preload any images here
+    this.load.image("gameStart", "assets/gamestart.png");
     this.load.image("forestimg", "assets/forest_tiles.png");
     this.load.image("atlasimg", "assets/misc_atlas.png");
     this.load.image("japanimg", "assets/RuralJapan_Shadows_32x 32.png");
     this.load.image("villageimg", "assets/village32x32.png");
 
     this.load.spritesheet('lee', 'assets/Lee32x32.png', {frameWidth: 32, frameHeight: 32});
+    this.load.spritesheet('S', 'assets/S32x32.png', {frameWidth: 32, frameHeight: 32});
 
     this.load.audio("bgMusic",'assets/background.mp3');
 
@@ -100,6 +102,13 @@ this.anims.create({
     frames: this.anims.generateFrameNumbers('lee', { start: 9, end: 11 }),
     frameRate: 5,
     repeat: -1
+});
+
+this.anims.create({
+  key: 'Sword',
+  frames: this.anims.generateFrameNumbers('S', { start: 0, end: 15 }),
+  frameRate: 20,
+  repeat: -1
 });
 
    
@@ -185,6 +194,9 @@ this.physics.add.collider(this.waterLayer, this.player)
       // console.log('idle');
     }
   } /////////////////// end of update //////////////////////////////
+
+
+
 room1(player, tile){
   console.log("room1 function");
    this.scene.start("room1")
