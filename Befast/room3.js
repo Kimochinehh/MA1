@@ -79,6 +79,16 @@ class room3 extends Phaser.Scene {
 
     create() {
         console.log('*** room3 scene');
+
+        console.log('*** room2 scene');
+        this.scene.launch("showInventory")
+
+        this.time.addEvent({
+          delay:100,
+          callback:updateInventory,
+          callbackScope: this,
+          loop:false,
+        });
         let map = this.make.tilemap({ key: "lv3map" });
 
         let villageTiles = map.addTilesetImage("village32x32", "villageimg");
@@ -118,7 +128,7 @@ class room3 extends Phaser.Scene {
     this.sword2 = this.physics.add.sprite(0, 0, 'sword').setVisible(true).play('Sword');
     this.sword3 = this.physics.add.sprite(0, 0, 'sword').setVisible(true).play('Sword');
     this.sword4 = this.physics.add.sprite(0, 0, 'sword').setVisible(true).play('Sword');
-    this.sword4 = this.physics.add.sprite(0, 0, 'sword').setVisible(true).play('Sword');
+    this.sword5 = this.physics.add.sprite(0, 0, 'sword').setVisible(true).play('Sword');
     this.rocket = this.physics.add.sprite(0, 0, 'rocket').setVisible(true);
     this.rocket2 = this.physics.add.sprite(0, 0, 'rocket').setVisible(true);
     this.nuclear = this.physics.add.sprite(0, 0, 'rocket').setVisible(true);
@@ -150,6 +160,15 @@ class room3 extends Phaser.Scene {
 
     this.physics.add.collider(this.stoneLayer, this.player)
 
+    this.physics.add.overlap(this.player,[this.arrow,this.arrow2,this.arrow3,this.arrow4],shootArrow,null,this);
+    this.physics.add.overlap(this.player,[this.bullet,this.bullet2,this.bullet3],shootBullet,null,this);
+    this.physics.add.overlap(this.player,[this.sword,this.sword2,this.sword3,this.sword4,this.sword5],shootSword,null,this);
+    this.physics.add.overlap(this.player,[this.rocket,this.rocket2],shootRocket,null,this);
+    this.physics.add.overlap(this.player,[this.nuclear,this.nuclear2,this.nuclear3,this.nuclear4,this.nuclear5,this.nuclear6,this.nuclear7],shootRocket,null,this);
+    this.physics.add.overlap(this.player,this.firemagic,this.shootFiremagic,null,this);
+    this.physics.add.overlap(this.player,this.purplemagic,this.shootPurplemagic,null,this);
+
+
     this.timer2= this.time.addEvent({
       delay: 3000,
       callback: this.shootFireBall,
@@ -169,6 +188,9 @@ class room3 extends Phaser.Scene {
     this.cursors = this.input.keyboard.createCursorKeys();
 
     this.cameras.main.startFollow(this.player);
+
+    console.log("showInventory");
+    this.scene.launch("showInventory");
         
     }
 

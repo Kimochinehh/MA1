@@ -58,6 +58,15 @@ class room2 extends Phaser.Scene {
 
     create() {
         console.log('*** room2 scene');
+        this.scene.launch("showInventory")
+
+        this.time.addEvent({
+          delay:100,
+          callback:updateInventory,
+          callbackScope: this,
+          loop:false,
+        });
+
         let map = this.make.tilemap({ key: "lv2map" });
 
         let atlasTiles = map.addTilesetImage("misc_atlas", "atlasimg");
@@ -108,6 +117,11 @@ class room2 extends Phaser.Scene {
     this.physics.add.collider(this.floorLayer, this.player)
     this.physics.add.collider(this.sakuraLayer, this.player)
 
+    this.physics.add.overlap(this.player,[this.arrow,this.arrow2,this.arrow3,this.arrow4],shootArrow,null,this);
+    this.physics.add.overlap(this.player,[this.bullet,this.bullet2,this.bullet3],shootBullet,null,this);
+    this.physics.add.overlap(this.player,[this.sword,this.sword2,this.sword3,this.sword4],shootSword,null,this);
+    this.physics.add.overlap(this.player,[this.rocket,this.rocket2],shootRocket,null,this);
+
     this.timer2= this.time.addEvent({
       delay: 5000,
       callback: this.shootFireBall,
@@ -126,6 +140,9 @@ class room2 extends Phaser.Scene {
     this.cursors = this.input.keyboard.createCursorKeys();
 
     this.cameras.main.startFollow(this.player);
+
+    console.log("showInventory");
+    this.scene.launch("showInventory");
         
     }
 

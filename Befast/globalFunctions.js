@@ -32,8 +32,7 @@ function shootArrow (player, arrow){
   updateInventory.call(this)
 
 if (window.heart == 0){
-  this.scene.start("gameover");
-  this.loseSnd.play();
+  this.scene.start("gameOver");
 }
 
 }
@@ -49,8 +48,7 @@ function shootBullet (player, bullet){
   updateInventory.call(this)
 
 if (window.heart == 0){
-  this.scene.start("gameover");
-  this.loseSnd.play();
+  this.scene.start("gameOver");
 }
 
 }
@@ -66,8 +64,72 @@ function shootSword (player, sword){
   updateInventory.call(this)
 
 if (window.heart == 0){
-  this.scene.start("gameover");
-  this.loseSnd.play();
+  this.scene.start("gameOver");
 }
 
 }
+
+function shootRocket (player, rocket){
+  console.log("shoot rocket")
+
+  this.cameras.main.shake(150);
+
+  window.heart--
+  rocket.disableBody(true, true);
+  //this.updateInventory()
+  updateInventory.call(this)
+
+if (window.heart == 0){
+  this.scene.start("gameOver");
+}
+
+}
+
+function shootNuclear (player, nuclear){
+  console.log("shoot nuclear")
+
+  this.cameras.main.shake(150);
+
+  window.heart--
+  nuclear.disableBody(true, true);
+  //this.updateInventory()
+  updateInventory.call(this)
+
+if (window.heart == 0){
+  this.scene.start("gameOver");
+}
+
+}
+
+function shootFiremagic (player, firemagic){
+  console.log("shoot firemagic")
+
+  this.cameras.main.shake(150);
+
+  window.heart--
+  firemagic.disableBody(true, true);
+  //this.updateInventory()
+  updateInventory.call(this)
+
+if (window.heart == 0){
+  this.scene.start("gameOver");
+}
+
+}
+
+function shootPurplemagic (player, purplemagic){
+  console.log("shoot purplemagic")
+
+  this.cameras.main.shake(150);
+
+  window.heart--
+  purplemagic.disableBody(true, true);
+  //this.updateInventory()
+  updateInventory.call(this)
+
+if (window.heart == 0){
+  this.scene.start("gameOver");
+}
+
+}
+

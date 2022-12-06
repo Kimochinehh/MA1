@@ -19,14 +19,8 @@
 
   create() {
 console.log("***showInventory");
-this.scene.bringTop("showInventory")
 
-    var rect = new Phaser.Geom.Rectangle(50, 0, 640, 50);
-    var graphics = this.add.graphics({
-        fillStyle: {
-            color: 0x000000
-        }
-    });
+   
     graphics.fillRectShape(rect).setScrollFactor(0)
 
     // Setup heart and keys but visible to false

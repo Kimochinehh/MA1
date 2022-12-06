@@ -13,7 +13,7 @@ class gameOver extends Phaser.Scene {
     }
 
     create() {
-      this.add.image (320,320,'tryagain')
+      this.add.image (500,300,'tryagain').setScale(0.2);
 
       var spaceDown = this.input.keyboard.addKey('SPACE');
 
